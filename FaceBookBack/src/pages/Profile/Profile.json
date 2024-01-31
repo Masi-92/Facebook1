@@ -1,0 +1,29 @@
+{
+    "avatar": "https://demos.creative-tim.com/now-ui-kit-react/static/media/ryan.ca24473b.jpg",
+    "fullName": "Ryan Scheinder",
+    "job": "Photographer",
+    "commentCount": 26,
+    "likeCount": 2000,
+    "postCount": 120,
+    "about": "An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.",
+    "travel": [
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg7.6249276d.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg8.2c89438b.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg3.850b8088.jpg"
+    ],
+    "sport": [
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg1.71a28027.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg8.2c89438b.jpg"
+    ],
+    "hubbies": [
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg3.850b8088.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg7.6249276d.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg1.71a28027.jpg",
+        "https://demos.creative-tim.com/now-ui-kit-react/static/media/bg8.2c89438b.jpg"
+    ],
+    "social": {
+        "twitter": "https://twitter.com/CreativeTim?ref=creativetim",
+        "facebook": "https://www.facebook.com/CreativeTim?ref=creativetim",
+        "instagram": "https://www.instagram.com/CreativeTimOfficial?ref=creativetim"
+    }
+}

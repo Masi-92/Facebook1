@@ -1,0 +1,35 @@
+import postModel from "../models/post.model.js";
+
+export const create = async (req, res) => {
+  const body = req.body;
+  const result = await postModel.create(body);
+
+  res.send(result);
+};
+
+export const getPost = async (req, res) => {
+  const posts = await postModel.find();
+  res.send(posts);
+};
+
+//details
+
+export const getDetails = async (req, res) => {
+  const postId = req.params.id;
+
+  //const details = await postModel.findOne({ _id:postId });
+  const detailsId = await postModel.findById(postId);
+
+  //res.send(details);
+  res.send(detailsId);
+};
+
+export const editLike = async (req, res) => {
+  const postId = req.params.id;
+
+  const postLike = await postModel.findByIdAndUpdate(postId, {
+    $inc:{likeCount:1},
+  });
+
+  res.send(postLike);
+};
