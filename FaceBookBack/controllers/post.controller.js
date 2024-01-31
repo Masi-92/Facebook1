@@ -28,8 +28,14 @@ export const editLike = async (req, res) => {
   const postId = req.params.id;
 
   const postLike = await postModel.findByIdAndUpdate(postId, {
-    $inc:{likeCount:1},
+    $inc: { likeCount: 1 },
   });
 
   res.send(postLike);
+};
+
+export const deletePost = async (req, res) => {
+  const postId = req.params.id;
+  const delPost = await postModel.findByIdAndDelete(postId);
+  res.send(delPost);
 };
