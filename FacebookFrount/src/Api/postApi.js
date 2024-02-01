@@ -20,6 +20,6 @@ return myApi.delete("/post/"+id)
 
   }
 
- export  const addPost = ()=>{
-return myApi.post("/post")
+ export  const addPost = (body)=>{
+return myApi.post("/post",body)
   }
