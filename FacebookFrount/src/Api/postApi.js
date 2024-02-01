@@ -19,3 +19,7 @@ export const editLike = (id)=>{
 return myApi.delete("/post/"+id)
 
   }
+
+ export  const addPost = ()=>{
+return myApi.post("/post")
+  }
