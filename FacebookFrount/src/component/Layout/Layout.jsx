@@ -1,5 +1,6 @@
 import { NavLink, Route } from "react-router-dom";
 import style from "./layout.module.scss";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 export const Layout = () => {
   const nav = [
@@ -7,6 +8,8 @@ export const Layout = () => {
     { name: "Profile", to: "/Profile" },
     { name: "Sting", to: "/Sting" },
     { name: "Logout", to: "/register" },
+    {name: <AddCircleIcon sx={{}} />,to: "/add",
+    },
   ];
 
   return (

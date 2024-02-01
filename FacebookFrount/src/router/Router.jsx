@@ -4,7 +4,8 @@ import Profile from "../pages/Profile/Profile"
 import Sting from "../pages/Sting1/Sting"
 import { Details } from "../component/Details"
 import Login from "../pages/auth/login/login"
-import Register from "../pages/auth/rigester/register"
+import Register from "../pages/auth/register/register"
+import AddPost from "../pages/addPost/Addpost"
 
 const Router = () => {
   return (
@@ -16,7 +17,7 @@ const Router = () => {
 <Route path="/details/:id"  element= {<Details/>} />
 <Route path="/login" element = {<Login/>}/>
 <Route path="/register" element ={<Register/>}/>
-
+<Route path="/add" element ={<AddPost/>}/>
 
 
     </Routes>

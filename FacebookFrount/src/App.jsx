@@ -1,4 +1,5 @@
 import { Layout } from "./component/Layout/Layout"
+
 import Router from "./router/Router"
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <>
 <Layout/>    
 <Router/>
+
     </>
   )
 }
