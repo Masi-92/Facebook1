@@ -4,8 +4,9 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import style from "./post/details.module.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useParams } from "react-router-dom";
-import { editLike, getDetails } from "../Api/postApi";
+import { deletePost, editLike, getDetails } from "../Api/postApi";
 
 export const Details = () => {
   const [data, setData] = useState({});
@@ -28,6 +29,18 @@ export const Details = () => {
         console.error("error");
       });
   };
+
+  const handelDelete =()=>{
+deletePost(data._id)
+.then(()=>{
+  deletePost()
+})
+.catch(()=>{
+  console.error("error");
+})
+
+  }
+
   //jedes mal wenn id sich ändert wird neue gerendert
   //???????
 
@@ -43,6 +56,7 @@ export const Details = () => {
           Like:{data.likeCount}{" "}
           <FavoriteIcon style={{ color: "red" }} onClick={handleLike} />
         </span>
+       <DeleteIcon  onClick = {handelDelete}/>
       </CardContent>
 
       <CardMedia
