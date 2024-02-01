@@ -14,10 +14,28 @@ export const register = async (req, res) => {
 
   const hash = await bcrypt.hash(password, 10);
   const newUser = await userModel.create({
-    
     email,
     fullName,
     password: hash,
   });
-  res.send(newUser)
+  res.send(newUser);
+};
+
+export const login = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res
+      .status(400)
+      .send({ msg: "Your Email or your Password is empty" });
+  }
+  const user = await userModel.findOne({ email });
+  if (!user) {
+    return res.status(400).send({ msg: "user is not exist" });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(400).send({ msg: "Password is not correct" });
+  }
+res.send({ msg: "Wellcommen" })
 };

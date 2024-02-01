@@ -5,12 +5,13 @@ import { useEffect, useState } from "react";
 import style from "./post/details.module.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { deletePost, editLike, getDetails } from "../Api/postApi";
 
 export const Details = () => {
   const [data, setData] = useState({});
   const { id } = useParams();
+const navigate = useNavigate()
   useEffect(() => {
     getData();
   }, []);
@@ -33,7 +34,7 @@ export const Details = () => {
   const handelDelete =()=>{
 deletePost(data._id)
 .then(()=>{
-  deletePost()
+  navigate(-1)
 })
 .catch(()=>{
   console.error("error");
