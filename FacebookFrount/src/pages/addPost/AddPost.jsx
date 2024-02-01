@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { addPost } from "../../Api/postApi";
-import { Avatar, IconButton, TextField, PhotoCameraIcon } from "@mui/material";
+import { Button, IconButton, TextField } from "@mui/material";
+import style from "./addpost.module.scss"
 
 const AddPost = () => {
   const [username, setUsername] = useState("");
@@ -10,9 +11,11 @@ const AddPost = () => {
   const [time, setTime] = useState("");
 
   //neu Avatar
-  const handleAvatarClick = (avatar) => {
-    setAvatar(avatar);
-  };
+const handleAvatarClick= (avatar)=>{
+
+setAvatar(avatar)
+
+}
 
   const handleAddNewPost = () => {
     const body = {
@@ -32,7 +35,7 @@ const AddPost = () => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <TextField
         onChange={(e) => setUsername(e.target.value)}
         value={username}
@@ -53,27 +56,17 @@ const AddPost = () => {
         label="Avatar"
       />
 
-      <div>
-        <input
-          type="
+<div>
+<input type="
 file"
-          accept="image"
-          onChange={(e) => handleAvatarClick(e.target.files[0])}
-          style={{ display: "none" }}
-          id="avatar-input"
-        />
-        <label htmlFor="avatar-input">
-          <IconButton component="span">
-            {avatar ? (
-              <Avatar src={URL.createObjectURL(avatar)} />
-            ) : (
-              <Avatar>
-                <PhotoCameraIcon />
-              </Avatar>
-            )}
-          </IconButton>
-        </label>
-      </div>
+accept="image"
+onChange={(e) => handleAvatarClick(e.target.files[0])}
+style={{display:"none"}}
+id="avatar-input"
+/>
+
+
+</div>
 
       <TextField
         onChange={(e) => setLikeCount(e.target.value)}
@@ -105,7 +98,7 @@ file"
         fullWidth
         type="date"
         id="time"
-        label="Post Time"
+       
       />
 
       <IconButton
@@ -113,7 +106,7 @@ file"
         type="button"
         fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2 }}
+        sx={{ mt: 3, mb: 2, color:"#7f11e1"}}
       >
         Add Post
       </IconButton>
