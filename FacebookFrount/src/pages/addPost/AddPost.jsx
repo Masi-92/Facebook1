@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { addPost } from "../../Api/postApi";
-import { Button, IconButton, TextField } from "@mui/material";
+import { IconButton, TextField } from "@mui/material";
 import style from "./addpost.module.scss"
 
 const AddPost = () => {
   const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState(null);
-  const [likeCount, setLikeCount] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [likeCount, setLikeCount] = useState("1");
   const [image, setImage] = useState("");
   const [time, setTime] = useState("");
 
