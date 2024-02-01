@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { addPost } from "../../Api/postApi";
-import { TextField } from "@mui/material";
+import { Avatar, IconButton, TextField, PhotoCameraIcon } from "@mui/material";
 
 const AddPost = () => {
   const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState(null);
   const [likeCount, setLikeCount] = useState("");
   const [image, setImage] = useState("");
   const [time, setTime] = useState("");
 
-  const addNewPost = () => {
+  //neu Avatar
+  const handleAvatarClick = (avatar) => {
+    setAvatar(avatar);
+  };
+
+  const handleAddNewPost = () => {
     const body = {
       username,
       avatar,
@@ -18,41 +23,102 @@ const AddPost = () => {
       time,
     };
     addPost(body)
-    .then(()=>{
-
-        alert("your post is created")
-    }).catch(()=>{
-        alert("invalid post ")
-    })
+      .then(() => {
+        alert("Your post is created");
+      })
+      .catch(() => {
+        alert("Invalid post");
+      });
   };
 
-  return <div>
+  return (
+    <div>
+      <TextField
+        onChange={(e) => setUsername(e.target.value)}
+        value={username}
+        margin="normal"
+        required
+        fullWidth
+        name="username"
+        label="Username"
+        type="text"
+      />
+      <TextField
+        onChange={(e) => setAvatar(e.target.value)}
+        value={avatar}
+        margin="normal"
+        required
+        fullWidth
+        id="avatar"
+        label="Avatar"
+      />
 
-<TextField
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-          margin="normal"
-          required
-          fullWidth
-          name="username"
-          label="username"
-          type="text"
-          id="password"
-          autoComplete="current-password"
+      <div>
+        <input
+          type="
+file"
+          accept="image"
+          onChange={(e) => handleAvatarClick(e.target.files[0])}
+          style={{ display: "none" }}
+          id="avatar-input"
         />
-   <TextField
-          onChange={(e) => setAvatar(e.target.value)}
-          value={avatar}
-          margin="normal"
-          required
-          fullWidth
-          id="avatar"
-          label="Avatar"
-          name="avatar"
-          autoComplete="avatar"
-          autoFocus
-        />
-  </div>;
+        <label htmlFor="avatar-input">
+          <IconButton component="span">
+            {avatar ? (
+              <Avatar src={URL.createObjectURL(avatar)} />
+            ) : (
+              <Avatar>
+                <PhotoCameraIcon />
+              </Avatar>
+            )}
+          </IconButton>
+        </label>
+      </div>
+
+      <TextField
+        onChange={(e) => setLikeCount(e.target.value)}
+        value={likeCount}
+        margin="normal"
+        required
+        fullWidth
+        id="likeCount"
+        label="Like Count"
+        type="number"
+      />
+      <img
+        src="https://source.unsplash.com/random?wallpapers"
+        alt="Random Wallpaper"
+      />
+      <TextField
+        onChange={(e) => setImage(e.target.value)}
+        value={image}
+        margin="normal"
+        fullWidth
+        id="image"
+        label="Image URL"
+      />
+      <TextField
+        onChange={(e) => setTime(e.target.value)}
+        value={time}
+        margin="normal"
+        required
+        fullWidth
+        type="date"
+        id="time"
+        label="Post Time"
+      />
+
+      <IconButton
+        onClick={handleAddNewPost}
+        type="button"
+        fullWidth
+        variant="contained"
+        sx={{ mt: 3, mb: 2 }}
+      >
+        Add Post
+      </IconButton>
+    </div>
+  );
 };
 
 export default AddPost;
