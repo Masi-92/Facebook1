@@ -6,6 +6,7 @@ export const Layout = () => {
     { name: "Home", to: "/Home" },
     { name: "Profile", to: "/Profile" },
     { name: "Sting", to: "/Sting" },
+    { name: "Logout", to: "/register" },
   ];
 
   return (

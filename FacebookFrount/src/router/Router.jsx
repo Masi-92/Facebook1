@@ -3,7 +3,8 @@ import Home from "../pages/Home/Home"
 import Profile from "../pages/Profile/Profile"
 import Sting from "../pages/Sting1/Sting"
 import { Details } from "../component/Details"
-
+import Login from "../pages/auth/login/login"
+import Register from "../pages/auth/rigester/register"
 
 const Router = () => {
   return (
@@ -13,6 +14,8 @@ const Router = () => {
 <Route path="/Profile"  element= {<Profile/>}/>
 <Route path="/sting"  element= {<Sting/>} />
 <Route path="/details/:id"  element= {<Details/>} />
+<Route path="/login" element = {<Login/>}/>
+<Route path="/register" element ={<Register/>}/>
 
 
 

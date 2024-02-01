@@ -1,0 +1,14 @@
+
+.container {
+   margin: .2 rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    gap: .3rem;
+    background-color: #93c1e0;
+
+    .background {
+   border-radius: 5px;
+    }
+}
