@@ -1,29 +1,21 @@
 import { useState } from "react";
 import { addPost } from "../../Api/postApi";
 import { IconButton, TextField } from "@mui/material";
-import style from "./addpost.module.scss"
+import style from "./addpost.module.scss";
 
 const AddPost = () => {
-  const [username, setUsername] = useState("");
-  const [avatar, setAvatar] = useState("");
-  const [likeCount, setLikeCount] = useState("1");
+  //const [username, setUsername] = useState("");
+  //const [avatar, setAvatar] = useState("");
+  //const [likeCount, setLikeCount] = useState("");
   const [image, setImage] = useState("");
-  const [time, setTime] = useState("");
+  const [text, setText] = useState("");
 
   //neu Avatar
-const handleAvatarClick= (avatar)=>{
-
-setAvatar(avatar)
-
-}
 
   const handleAddNewPost = () => {
     const body = {
-      username,
-      avatar,
-      likeCount,
+     text,
       image,
-      time,
     };
     addPost(body)
       .then(() => {
@@ -36,7 +28,7 @@ setAvatar(avatar)
 
   return (
     <div className={style.container}>
-      <TextField
+      {/* <TextField
         onChange={(e) => setUsername(e.target.value)}
         value={username}
         margin="normal"
@@ -45,8 +37,8 @@ setAvatar(avatar)
         name="username"
         label="Username"
         type="text"
-      />
-      <TextField
+      /> */}
+      {/* <TextField
         onChange={(e) => setAvatar(e.target.value)}
         value={avatar}
         margin="normal"
@@ -54,21 +46,10 @@ setAvatar(avatar)
         fullWidth
         id="avatar"
         label="Avatar"
-      />
-
-<div>
-<input type="
-file"
-accept="image"
-onChange={(e) => handleAvatarClick(e.target.files[0])}
-style={{display:"none"}}
-id="avatar-input"
-/>
+      /> */}
 
 
-</div>
-
-      <TextField
+      {/* <TextField
         onChange={(e) => setLikeCount(e.target.value)}
         value={likeCount}
         margin="normal"
@@ -77,7 +58,7 @@ id="avatar-input"
         id="likeCount"
         label="Like Count"
         type="number"
-      />
+      /> */}
       <img
         src="https://source.unsplash.com/random?wallpapers"
         alt="Random Wallpaper"
@@ -91,22 +72,20 @@ id="avatar-input"
         label="Image URL"
       />
       <TextField
-        onChange={(e) => setTime(e.target.value)}
-        value={time}
+        onChange={(e) => setText(e.target.value)}
+        value={text}
         margin="normal"
         required
         fullWidth
-        type="date"
-        id="time"
-       
+        type="text"
+        id="text"
       />
-
       <IconButton
         onClick={handleAddNewPost}
         type="button"
         fullWidth
         variant="contained"
-        sx={{ mt: 3, mb: 2, color:"#7f11e1"}}
+        sx={{ mt: 3, mb: 2, color: "#7f11e1" }}
       >
         Add Post
       </IconButton>

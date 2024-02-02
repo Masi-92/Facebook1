@@ -2,10 +2,10 @@ import { Schema, model } from "mongoose";
 
 const schema= new Schema({
 
-username:String,
-avatar:String,
-likeCount:Number,
+user:{type:Schema.Types.ObjectId,ref:"user"},
+likeCount:{default:0,type:Number},
 image:String,
+text:String
 },{
 
 timestamps:true
