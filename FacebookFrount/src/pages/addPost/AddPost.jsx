@@ -2,6 +2,8 @@ import { useState } from "react";
 import { addPost } from "../../Api/postApi";
 import { IconButton, TextField } from "@mui/material";
 import style from "./addpost.module.scss";
+import { useNavigate } from "react-router-dom";
+
 
 const AddPost = () => {
   //const [username, setUsername] = useState("");
@@ -9,7 +11,7 @@ const AddPost = () => {
   //const [likeCount, setLikeCount] = useState("");
   const [image, setImage] = useState("");
   const [text, setText] = useState("");
-
+  const navigate = useNavigate();
   //neu Avatar
 
   const handleAddNewPost = () => {
@@ -24,6 +26,7 @@ const AddPost = () => {
       .catch(() => {
         alert("Invalid post");
       });
+      navigate("/Home")
   };
 
   return (
@@ -80,15 +83,9 @@ const AddPost = () => {
         type="text"
         id="text"
       />
-      <IconButton
-        onClick={handleAddNewPost}
-        type="button"
-        fullWidth
-        variant="contained"
-        sx={{ mt: 3, mb: 2, color: "#7f11e1" }}
-      >
-        Add Post
-      </IconButton>
+    
+      <button  className={style.button} onClick={handleAddNewPost} > Add post
+</button>
     </div>
   );
 };

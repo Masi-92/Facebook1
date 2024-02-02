@@ -8,8 +8,7 @@ export const Layout = () => {
     { name: "Profile", to: "/Profile" },
     { name: "Sting", to: "/Sting" },
     { name: "Logout", to: "/register" },
-    {name: <AddCircleIcon sx={{}} />,to: "/add",
-    },
+   
   ];
 
   return (

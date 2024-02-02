@@ -6,4 +6,31 @@ background-color: rgb(221, 211, 211);
 padding: 1rem;
 
 
+
 }          
+.header{
+    display: flex;
+    
+}
+
+
+.btn {
+    border: 2px solid #24b4fb;
+    background-color: #24b4fb;
+    border-radius: 0.9em;
+    padding: 0.5em 1em 0.5em .5em;
+    transition: all ease-in-out 0.2s;
+    font-size: 16px;
+   }
+   
+   .btn span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 600;
+   }
+   
+   .btn:hover {
+    background-color: #0071e2;
+   }
