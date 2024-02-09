@@ -5,8 +5,10 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import style from "./login.module.scss"
+import style from "./login.module.scss";
 import Box from "@mui/material/Box";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -14,18 +16,23 @@ const Login = () => {
 
   const handelLogin = () => {
     login(email, password)
-      .then(() => {
+      .then((res) => {
         navigate("/Home");
+        localStorage.setItem("token",res.data.token)  
       })
-      .catch(() => {});
+      .catch(() => {
+toast.error(" mache wieder login")
+
+
+      });
+
+   
   };
 
   return (
     <div className={style.container}>
-  
-    
       <div>
-      <Box
+        <Box
           sx={{
             marginTop: 8,
             display: "flex",
@@ -49,7 +56,6 @@ const Login = () => {
           type="password"
           id="password"
           autoComplete="current-password"
-          
         />
 
         <TextField
@@ -85,7 +91,6 @@ const Login = () => {
         }}
       ></div>
     </div>
-        
   );
 };
 

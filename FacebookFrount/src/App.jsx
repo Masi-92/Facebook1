@@ -1,6 +1,9 @@
 import { Layout } from "./component/Layout/Layout"
 
 import Router from "./router/Router"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function App() {
 
@@ -8,6 +11,7 @@ function App() {
     <>
 <Layout/>    
 <Router/>
+<ToastContainer />
 
     </>
   )
