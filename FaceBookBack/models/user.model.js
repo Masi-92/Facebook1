@@ -10,7 +10,7 @@ const userSchema = new Schema({
   bio:String,
   linkFaceBook:String,
   LinkX:String,
-  LinkInstargram:String
+  LinkInstagram:String
 });
 
 

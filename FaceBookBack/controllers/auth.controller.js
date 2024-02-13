@@ -44,3 +44,19 @@ export const login = async (req, res) => {
   })
   res.send({token, msg: "Wellcommen" });
 };
+
+export const getProfile = async(req,res)=>{
+
+  const userId = req.user.id
+  const user  = await userModel.findById(userId)
+  res.send(user)
+
+}
+
+ export const editProfile= async(req,res)=>{
+
+  const userId = req.user.id
+  const user  = await userModel.findByIdAndUpdate($Set)
+  res.send(user)
+
+}
