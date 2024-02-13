@@ -9,6 +9,11 @@ import style from "./Profile.module.scss";
 const Profile = () => {
   const [data, setData] = useState(ProfileData);
 
+  const handelProfile = ()=>{
+    const body = {
+
+    }
+  }
   return (
     <div>
       <div className={style.background}>
