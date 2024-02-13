@@ -9,7 +9,7 @@ const userSchema = new Schema({
   description:String,
   bio:String,
   linkFaceBook:String,
-  LinkX:String,
+  LinkTwitter:String,
   LinkInstagram:String
 });
 
