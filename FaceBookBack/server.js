@@ -6,6 +6,7 @@ import router from "./routers/post.router.js";
 import authRouter from "./routers/auth.router.js";
 import cors from "cors";
 
+
 const app = express();
 const PORT = process.env.PORT;
 

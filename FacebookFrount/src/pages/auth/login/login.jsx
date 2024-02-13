@@ -9,6 +9,7 @@ import style from "./login.module.scss";
 import Box from "@mui/material/Box";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import myApi from "../../../Api/api";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -19,6 +20,8 @@ const Login = () => {
       .then((res) => {
         navigate("/Home");
         localStorage.setItem("token",res.data.token)  
+        //
+        myApi.defaults.headers.token= res.data.token 
       })
       .catch(() => {
 toast.error(" mache wieder login")
@@ -45,18 +48,6 @@ toast.error(" mache wieder login")
             <LockOutlinedIcon />
           </Avatar>
         </Box>
-        <TextField
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          margin="normal"
-          required
-          fullWidth
-          name="password"
-          label="Password"
-          type="password"
-          id="password"
-          autoComplete="current-password"
-        />
 
         <TextField
           onChange={(e) => setEmail(e.target.value)}
@@ -70,6 +61,21 @@ toast.error(" mache wieder login")
           autoComplete="email"
           autoFocus
         />
+
+        <TextField
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+          margin="normal"
+          required
+          fullWidth
+          name="password"
+          label="Password"
+          type="password"
+          id="password"
+          autoComplete="current-password"
+        />
+
+       
         <Button
           onClick={handelLogin}
           type="submit"
