@@ -10,13 +10,13 @@ import { getProfile } from "../../Api/profile.api";
 const Profile = () => {
   const [data, setData] = useState(ProfileData);
 
-useEffect(()=>{
- getProfile()
- .then((res)=>{
-setData(res.data)
- }) 
- .catch((err) => alert(err));
-},[])
+// useEffect(()=>{
+//  getProfile()
+//  .then((res)=>{
+// setData({fullName:res.data.fullName})
+//  }) 
+//  .catch((err) => alert(err));
+// },[])
   return (
     <div>
       <div className={style.background}>
