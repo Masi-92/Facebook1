@@ -9,14 +9,14 @@ useEffect(()=>{
  getProfile()
  .then((res)=>{
 setData({fullName:res.data.fullName,
-job:res.data.job})
+job:res.data.job,avatar:res.data.avatar})
  }) 
- .catch((err) => alert(err));
+ .catch(() => alert("fehler is da"));
 },[])
 
   return (
     <div className={style.container}>
-<img  alt="" />
+<img  src={data.avatar}alt="" />
 <h1>{data.fullName}</h1>
 <p>{data.job}</p>
 

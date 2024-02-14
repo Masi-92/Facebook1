@@ -8,9 +8,9 @@ const About = () => {
    getProfile()
    .then((res)=>{
   setData({description:res.data.description,
-  job:res.data.job})
+   })
    }) 
-   .catch((err) => alert(err));
+   .catch(() => alert("fehler is da"));
   },[])
   return (
     <div className={style.container}>
