@@ -4,7 +4,7 @@ import PostCard from "../../component/post/PostCard";
 import style from "./home.module.scss";
 import { getPost } from "../../Api/postApi";
 import { IconButton } from "@mui/material";
-import AddCircleIcon from "@mui/icons-material/AddCircle";
+//import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {

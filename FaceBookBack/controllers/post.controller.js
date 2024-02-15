@@ -8,7 +8,7 @@ export const create = async (req, res) => {
 };
 
 export const getPost = async (req, res) => {
-  const posts = await postModel.find();
+  const posts = await postModel.find().populate("user");
   res.send(posts);
 };
 

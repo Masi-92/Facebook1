@@ -4,19 +4,24 @@ import Avatar from "./avatar/Avatar";
 import Count from "./count/Count";
 import Gallery from "./gallery/Gallery";
 import Social from "./social/Social";
-import ProfileData from "./Profile.json";
+//import ProfileData from "./Profile.json";
 import style from "./Profile.module.scss";
 import { getProfile } from "../../Api/profile.api";
 const Profile = () => {
-  const [data, setData] = useState(ProfileData);
+  const [data, setData] = useState();
 
-useEffect(()=>{
- getProfile()
- .then((res)=>{
-setData(res.data)
- }) 
- .catch((err) => alert(err));
-},[])
+  useEffect(() => {
+    getProfile()
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => alert(err));
+  }, []);
+
+  if (!data) {
+    return <p>loding </p>;
+  }
+ 
   return (
     <div>
       <div className={style.background}>
@@ -27,9 +32,9 @@ setData(res.data)
           post={data.postCount}
         />
         <Social
-          twitter={data.social.twitter}
-          instagram={data.social.instagram}
-          facebook={data.social.facebook}
+          twitter={data.LinkTwitter}
+          instagram={data.LinkInstagram}
+          facebook={data.linkFaceBook}
         />
         <div className={style.overlay}></div>
       </div>

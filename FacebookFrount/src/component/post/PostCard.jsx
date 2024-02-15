@@ -39,7 +39,7 @@ export default function PostCard({ post, getData }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar src={post.src} sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar src={post.user.avatar} sx={{ bgcolor: red[500] }} aria-label="recipe">
             R
           </Avatar>
         }
@@ -48,7 +48,7 @@ export default function PostCard({ post, getData }) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={post.username}
+        title={post.user.fullName}
         subheader={post.createdAt}
       />
 
