@@ -6,6 +6,7 @@ const userSchema = new Schema({
   password: {type:String,required:true,minLength:6},
   role:{type:String,default:"user"},
   avatar:String,
+  job:String,
   description:String,
   bio:String,
   linkFaceBook:String,

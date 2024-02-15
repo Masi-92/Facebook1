@@ -23,17 +23,15 @@ export const Layout = () => {
       return;
     }
     const decode = jwtDecode(token);
-    const time = new Date().getTime()
-    const exp =decode.exp * 1000
-    if( exp < time ){
+    const time = new Date().getTime();
+    const exp = decode.exp * 1000;
+    if (exp < time) {
+      //localStorage.clear() so wird alle DEL
+      // removeItem() just one clear
+      localStorage.removeItem("token");
 
-    //localStorage.clear() so wird alle DEL
-    // removeItem() just one clear 
-    localStorage.removeItem()
-    navigate("/login")
-
+      navigate("/login");
     }
-    
   }, []);
   return (
     <div>
@@ -73,3 +71,17 @@ export const Layout = () => {
     </div>
   );
 };
+
+// {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+//   <React.Fragment key={anchor}>
+//     <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+//     <SwipeableDrawer
+//       anchor={anchor}
+//       open={state[anchor]}
+//       onClose={toggleDrawer(anchor, false)}
+//       onOpen={toggleDrawer(anchor, true)}
+//     >
+//       {list(anchor)}
+//     </SwipeableDrawer>
+//   </React.Fragment>
+// ))}

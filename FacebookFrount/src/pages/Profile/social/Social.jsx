@@ -3,22 +3,39 @@ import  style from "./social.module.scss";
 import Facebook from "@mui/icons-material/Facebook";
 import Twitter from "@mui/icons-material/Twitter";
 import Instagram from "@mui/icons-material/Instagram";
-const Social = ({ twitter, facebook, instagram }) => {
+import { useEffect, useState } from "react";
+import { getProfile } from "../../../Api/profile.api";
+
+
+
+const Social = () => {
+
+
+  const [data, setData] = useState([]);
+
+  useEffect(()=>{
+   getProfile()
+   .then((res)=>{
+  setData({LinkInstagram:res.LinkInstagram,LinkTwitter:res.LinkTwitter,LinkFaceBook:res.LinkFaceBook
+   })
+   }) 
+   .catch((err) => alert(err));
+  },[])
   return (
     <div className={style.container}>
-      <a href={facebook} target='_blank'  rel='noreferrer' >
+      <a href={data.LinkFaceBook} target='_blank'  rel='noreferrer' >
         <IconButton aria-label="share" className={style.IconButton}>
           <Facebook />
         </IconButton>
       </a>
 
-      <a href={twitter} target="_blank" rel="noreferrer">
+      <a href={data.LinkTwitter} target="_blank" rel="noreferrer">
         <IconButton aria-label="share" className={style.IconButton}>
           <Twitter />
         </IconButton>
       </a>
 
-      <a href={instagram} target="_blank" rel="noreferrer">
+      <a href={data.LinkInstagram} target="_blank" rel="noreferrer">
         <IconButton aria-label="share" className={style.IconButton}>
           <Instagram />
         </IconButton>
