@@ -74,6 +74,7 @@ const EditProfile = () => {
     <div>
       <h2>Edit Profile</h2>
       <Card className={style.container}>
+      <div>
         <TextField
           name="fullName"
           label="Full Name"
@@ -104,7 +105,8 @@ const EditProfile = () => {
           onChange={handleChangeEditProfileForm}
           value={profile.linkFaceBook}
         />
-
+</div>
+<div>
         <TextField
           name="LinkTwitter"
           label="LinkTwitter"
@@ -127,7 +129,7 @@ const EditProfile = () => {
         <InputImage setValue={handleChangeImage} value={profile.avatar} />
 
         <InputImage  setValue={handleChangeBackground} value={profile.background} /> 
-
+        </div>
         <Button variant="contained" onClick={handleEditProfile}>
           Save
         </Button>
