@@ -7,5 +7,5 @@ const route = Router();
 route.post("/register",register);
 route.post("/login",login);
 route.get("/getProfile",auth,getProfile )
-route.put("/edit",editProfile)
+route.put("/edit",auth,editProfile)
 export default route;

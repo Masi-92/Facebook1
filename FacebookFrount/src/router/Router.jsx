@@ -6,7 +6,8 @@ import { Details } from "../component/Details"
 import Login from "../pages/auth/login/login"
 import Register from "../pages/auth/register/register"
 import AddPost from "../pages/addPost/Addpost"
-
+import SwipeableDrawer from "../component/SwipeableDrawer/SwipeableDrawer"
+import EditProfile from "../component/SwipeableDrawer/editeProfile/EditProfile"
 const Router = () => {
   return (
     <Routes>
@@ -18,7 +19,8 @@ const Router = () => {
 <Route path="/login" element = {<Login/>}/>
 <Route path="/register" element ={<Register/>}/>
 <Route path="/add" element ={<AddPost/>}/>
-
+<Route path="/drawer" element = {<SwipeableDrawer/>}/>
+<Route path="/editProfile" element = {<EditProfile/>}/>
 
     </Routes>
   )
