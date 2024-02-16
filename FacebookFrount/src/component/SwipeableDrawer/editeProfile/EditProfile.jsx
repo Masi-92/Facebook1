@@ -1,10 +1,10 @@
-import  { useEffect, useState } from "react";
-
+import { useEffect, useState } from "react";
 
 import { Button, Card, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 import { editProfileApi, getProfile } from "../../../Api/profile.api";
 import InputImage from "./uplaud/inputImage";
+import style from "./editProfile.module.scss";
 
 const EditProfile = () => {
   const [profile, setProfile] = useState({
@@ -12,21 +12,25 @@ const EditProfile = () => {
     email: "",
     avatar: "",
     job: "",
-    linkFaceBook:"",
-    LinkTwitter:"",
-    LinkInstagram:"",
+    linkFaceBook: "",
+    LinkTwitter: "",
+    LinkInstagram: "",
+    background: "",
   });
 
   useEffect(() => {
- 
-      getProfile() 
+    getProfile()
       .then((res) => {
-       setProfile({
+        setProfile({
           fullName: res.data.fullName,
           email: res.data.email,
           avatar: res.data.avatar,
           job: res.data.job,
-          description:res.data.description,
+          description: res.data.description,
+          linkFaceBook: res.data.linkFaceBook,
+          LinkTwitter: res.data.LinkTwitter,
+          LinkInstagram: res.data.LinkInstagram,
+          background:res.data.background
         });
       })
       .catch(() => {
@@ -49,9 +53,15 @@ const EditProfile = () => {
     }));
   };
 
+  const handleChangeBackground = (value) => {
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      background: value,
+    }));
+  };
+
   const handleEditProfile = () => {
     editProfileApi(profile)
-      
       .then(() => {
         toast.success("Profile updated successfully!");
       })
@@ -63,7 +73,7 @@ const EditProfile = () => {
   return (
     <div>
       <h2>Edit Profile</h2>
-      <Card>
+      <Card className={style.container}>
         <TextField
           name="fullName"
           label="Full Name"
@@ -82,39 +92,41 @@ const EditProfile = () => {
           onChange={handleChangeEditProfileForm}
           value={profile.job}
         />
-          <TextField
+        <TextField
           name="description"
           label="description"
           onChange={handleChangeEditProfileForm}
           value={profile.description}
         />
-            <TextField
+        <TextField
           name="linkFaceBook"
           label="linkFaceBook"
           onChange={handleChangeEditProfileForm}
           value={profile.linkFaceBook}
         />
 
-<TextField
+        <TextField
           name="LinkTwitter"
           label="LinkTwitter"
           onChange={handleChangeEditProfileForm}
           value={profile.LinkTwitter}
         />
-               <TextField
+        <TextField
           name="LinkInstagram"
           label="LinkInstagram"
           onChange={handleChangeEditProfileForm}
           value={profile.LinkInstagram}
         />
-<TextField
+        <TextField
           name="bio"
           label="bio"
           onChange={handleChangeEditProfileForm}
           value={profile.bio}
         />
 
-<InputImage  setValue={handleChangeEditProfileForm} value={profile.avatar}/>
+        <InputImage setValue={handleChangeImage} value={profile.avatar} />
+
+        <InputImage  setValue={handleChangeBackground} value={profile.background} /> 
 
         <Button variant="contained" onClick={handleEditProfile}>
           Save

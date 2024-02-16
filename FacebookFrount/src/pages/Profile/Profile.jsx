@@ -40,7 +40,7 @@ const Profile = () => {
           instagram={data.LinkInstagram}
           facebook={data.linkFaceBook}
         />
-        <div className={style.overlay}></div>
+        <div className={style.overlay} style={{ backgroundImage: `url(${data.background})`}}></div>
       </div>
 
       <About about={data.about} />

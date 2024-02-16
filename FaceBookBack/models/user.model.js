@@ -11,7 +11,8 @@ const userSchema = new Schema({
   bio:String,
   linkFaceBook:String,
   LinkTwitter:String,
-  LinkInstagram:String
+  LinkInstagram:String,
+  background:String
 });
 
 
