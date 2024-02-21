@@ -4,9 +4,10 @@ import Avatar from "./avatar/Avatar";
 import Count from "./count/Count";
 import Gallery from "./gallery/Gallery";
 import Social from "./social/Social";
-//import ProfileData from "./Profile.json";
+import ProfileData from "./Profile.json";
 import style from "./Profile.module.scss";
 import { getProfile } from "../../Api/profile.api";
+import { TextField } from "@mui/material";
 
 const Profile = () => {
   const [data, setData] = useState();
@@ -44,7 +45,12 @@ const Profile = () => {
       </div>
 
       <About about={data.about} />
-      <Gallery travel={data.travel} sport={data.sport} hubby={data.hubbies} />
+
+
+  
+
+      
+      <Gallery />
     </div>
   );
 };

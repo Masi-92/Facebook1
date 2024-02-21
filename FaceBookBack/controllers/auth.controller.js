@@ -38,25 +38,21 @@ export const login = async (req, res) => {
   if (!isMatch) {
     return res.status(400).send({ msg: "Password is not correct" });
   }
-  
+
   const token = Jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
     expiresIn: "1 day",
-  })
-  res.send({token, msg: "Wellcommen" });
+  });
+  res.send({ token, msg: "Wellcommen" });
 };
 
-export const getProfile = async(req,res)=>{
+export const getProfile = async (req, res) => {
+  const userId = req.user.id;
+  const user = await userModel.findById(userId);
+  res.send(user);
+};
 
-  const userId = req.user.id
-  const user  = await userModel.findById(userId)
-  res.send(user)
-
-}
-
- export const editProfile= async(req,res)=>{
-
-  const userId = req.user.id
-  const user  = await userModel.findByIdAndUpdate(userId,{$set:req.body})
-  res.send(user)
-
-}
+export const editProfile = async (req, res) => {
+  const userId = req.user.id;
+  const user = await userModel.findByIdAndUpdate(userId, { $set: req.body });
+  res.send(user);
+};

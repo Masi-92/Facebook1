@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import postModel from "../models/post.model.js";
 
 export const create = async (req, res) => {
@@ -39,3 +40,22 @@ export const deletePost = async (req, res) => {
   const delPost = await postModel.findByIdAndDelete(postId);
   res.send(delPost);
 };
+
+
+
+
+
+  export const getPostById  = async (req, res) => {
+    try {
+      const userId = req.params.userId;
+      const posts = await postModel.find({ user: mongoose.Types.ObjectId(userId) }).populate("user");
+  
+      if (!posts || posts.length === 0) {
+        return res.status(404).send({ message: "No posts found for this user" });
+      }
+      res.send(posts);
+    } catch (error) {
+      console.error("Error fetching posts by user ID:", error);
+      res.status(500).send({ message: "Error fetching posts by user ID" });
+    }
+  };

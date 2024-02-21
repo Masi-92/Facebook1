@@ -1,42 +1,34 @@
-import { IconButton } from "@mui/material";
-import CollectionsIcon from "@mui/icons-material/Collections";
-import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
-import PublicIcon from "@mui/icons-material/Public";
-import { useState } from "react";
-import style from "./gallery.module.scss"
-import { ClassNames } from "@emotion/react";
+import  { useEffect, useState } from "react";
+import style from "./gallery.module.scss";
+import { useParams } from "react-router-dom";
+import { getPost, getPostById } from "../../../Api/postApi"; // Removed unused import
 
-const Gallery = ({ travel, sport, hubby }) => {
+const Gallery = () => {
+  const [data, setData] = useState([]);
+  const { id } = useParams();
 
-  const [image,setImage] = useState([]);
+  useEffect(() => {
+    getPostById(id) 
+      .then((res) => {
+        console.log("Response data:", res.data);
+        setData(res.data);
+      })
+      .catch((err) => alert(err));
+  },[id]);
 
- 
-   
   return (
-    <div className={style.container} >
-   <div >   <IconButton aria-label="share" className={style.CollectionsIcon} onClick={()=>{setImage(travel)}}>
-        <CollectionsIcon    style={{
-    display: travel ? "block" : "none",
-  }}
-  className={travel ? style.CollectionsIcon : ''} />
-      </IconButton>
-
-      <IconButton aria-label="share"  onClick={()=>{setImage(sport)}}>
-        <DirectionsRunIcon />
-      </IconButton>
-      <IconButton aria-label="share"  onClick={()=>{setImage(hubby)}} >
-        <PublicIcon />
-      </IconButton> </div>
-
-<div  className={style.containerImag}>
-{image.map((item,index)=>{
-
-return <img src={item} key={index} style={{width:"400px"}}  />
-})}
-
-
-</div>
-  
+    <div className={style.container}>
+      {Array.isArray(data) &&
+        data.map((post) => (
+          <div key={post.id} className={style.post}>
+            <h1>{post.text}</h1>
+            <div className={style.images}>
+              {post.images.map((image, index) => (
+                <img key={index} src={image} alt="" />
+              ))}
+            </div>
+          </div>
+        ))}
     </div>
   );
 };

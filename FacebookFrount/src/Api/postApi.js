@@ -23,3 +23,10 @@ return myApi.delete("/post/"+id)
  export  const addPost = (body)=>{
 return myApi.post("/post",body)
   }
+
+  
+
+  export const getPostById = (id) => {
+    return myApi.get(`/post/${id}`);
+  };
+  

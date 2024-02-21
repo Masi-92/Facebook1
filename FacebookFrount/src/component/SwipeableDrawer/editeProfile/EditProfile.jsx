@@ -65,7 +65,7 @@ const EditProfile = () => {
       .then(() => {
         toast.success("Profile updated successfully!");
       })
-      .catch((err) => {
+      .catch(() => {
         toast.error("Failed to update profile. Please try again.");
       });
   };

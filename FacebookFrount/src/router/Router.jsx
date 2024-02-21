@@ -6,8 +6,9 @@ import { Details } from "../component/Details"
 import Login from "../pages/auth/login/login"
 import Register from "../pages/auth/register/register"
 import AddPost from "../pages/addPost/Addpost"
-import SwipeableDrawer from "../component/SwipeableDrawer/SwipeableDrawer"
 import EditProfile from "../component/SwipeableDrawer/editeProfile/EditProfile"
+import Gallery from "../pages/Profile/gallery/Gallery"
+//import Drawer from "../component/SwipeableDrawer/Drawer"
 const Router = () => {
   return (
     <Routes>
@@ -19,8 +20,9 @@ const Router = () => {
 <Route path="/login" element = {<Login/>}/>
 <Route path="/register" element ={<Register/>}/>
 <Route path="/add" element ={<AddPost/>}/>
-<Route path="/drawer" element = {<SwipeableDrawer/>}/>
-<Route path="/editProfile" element = {<EditProfile/>}/>
+{/* <Route path="/drawer" element = {<Drawer/>}/>
+ */}<Route path="/editProfile" element = {<EditProfile/>}/>
+<Route path="/gallery/:id" element = {<Gallery/>}/>
 
     </Routes>
   )
