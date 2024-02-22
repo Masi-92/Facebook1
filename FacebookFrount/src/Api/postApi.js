@@ -26,7 +26,7 @@ return myApi.post("/post",body)
 
   
 
-  export const getPostById = (id) => {
-    return myApi.get(`/post/${id}`);
+  export const getMyPost = () => {
+    return myApi.get(`/post/myPosts`);
   };
   

@@ -56,3 +56,12 @@ export const editProfile = async (req, res) => {
   const user = await userModel.findByIdAndUpdate(userId, { $set: req.body });
   res.send(user);
 };
+
+
+export const getOthersProfile=async (req,res)=>{
+const userId = req.params.id
+
+const user = await userModel.findById(userId)
+res.send(user);
+
+}
