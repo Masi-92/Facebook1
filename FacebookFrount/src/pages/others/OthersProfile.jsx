@@ -7,20 +7,20 @@ import Social from "../Profile/social/Social";
 import style from "./OthersProfile.module.scss";
 import { getOthersProfile  } from "../../Api/profile.api";
 
-const OthersProfile= () => {
+const OthersProfile= ({id}) => {
   const [data, setData] = useState();
 
 
   useEffect(() => {
-    getOthersProfile ()
+    getOthersProfile (id)
       .then((res) => {
         setData(res.data);
       })
       .catch((err) => alert(err));
-  }, []);
+  }, [id]);
 
   if (!data) {
-    return <p>loding </p>;
+    return <p>loading </p>;
   }
  
 

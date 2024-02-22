@@ -21,7 +21,12 @@ import { editLike } from "../../Api/postApi";
 export default function PostCard({ post, getData }) {
   const navigate = useNavigate();
   //const [countLike,setCountLike] =  useState (post.likeCount)
+ 
+  const handelOthersPro= ()=>{
+    navigate("/GetOthersProfile")
 
+  }
+  
   const handleLike = () => {
     editLike(post._id)
       .then(() => {
@@ -39,7 +44,7 @@ export default function PostCard({ post, getData }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar src={post.user.avatar} sx={{ bgcolor: red[500] }} aria-label="recipe">
+          <Avatar src={post.user.avatar} sx={{ bgcolor: red[500] }} aria-label="recipe" onClick={()=>handelOthersPro()} >
             R
           </Avatar>
         }
