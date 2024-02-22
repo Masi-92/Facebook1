@@ -1,29 +1,34 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import About from "../Profile/about/About";
 import Avatar from "../Profile/avatar/Avatar";
 import Count from "../Profile/count/Count";
-import Gallery from "../Profile/gallery/Gallery";
+//import Gallery from "../Profile/gallery/Gallery";
 import Social from "../Profile/social/Social";
 import style from "./OthersProfile.module.scss";
-import { getOthersProfile  } from "../../Api/profile.api";
 
-const OthersProfile= ({id}) => {
+import { useParams } from "react-router-dom";
+import { getOthersProfile } from "../../Api/profile.api.js";
+import { toast } from "react-toastify";
+
+const OthersProfile = () => {
   const [data, setData] = useState();
+  const { id } = useParams();
 
 
   useEffect(() => {
-    getOthersProfile (id)
+    getAllData();
+  }, [id]);
+
+  function getAllData() {
+   getOthersProfile(id)
       .then((res) => {
         setData(res.data);
       })
-      .catch((err) => alert(err));
-  }, [id]);
-
-  if (!data) {
-    return <p>loading </p>;
+      .catch((err) => toast.error(err));
   }
- 
-
+  if (!data) {
+    return <p>Lade...</p>;
+  }
 
   return (
     <div>
@@ -39,16 +44,15 @@ const OthersProfile= ({id}) => {
           instagram={data.LinkInstagram}
           facebook={data.linkFaceBook}
         />
-        <div className={style.overlay} style={{ backgroundImage: `url(${data.background})`}}></div>
+        <div
+          className={style.overlay}
+          style={{ backgroundImage: `url(${data.background})` }}
+        ></div>
       </div>
 
       <About about={data.about} />
 
-
-  
-
-      
-      <Gallery />
+     {/*  <Gallery /> */}
     </div>
   );
 };

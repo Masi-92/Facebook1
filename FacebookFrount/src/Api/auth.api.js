@@ -11,4 +11,3 @@ return myApi.post("/auth/login",{email,password})
 
   }
 
-  

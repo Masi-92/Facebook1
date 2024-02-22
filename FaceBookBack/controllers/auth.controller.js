@@ -58,6 +58,7 @@ export const editProfile = async (req, res) => {
 };
 
 
+
 export const getOthersProfile=async (req,res)=>{
 const userId = req.params.id
 

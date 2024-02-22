@@ -9,5 +9,8 @@ export const editProfileApi = (body) => {
 };
 
 export const getOthersProfile = (id) => {
-  return myApi.get("/auth", id);
+  return myApi.get("/auth/", {
+    params: { id },
+    withCredentials: true
+  });
 };

@@ -12,4 +12,5 @@ avatar:String,
 timestamps:true
 })
 
+
 export default model("post",schema)

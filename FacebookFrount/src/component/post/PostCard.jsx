@@ -23,7 +23,7 @@ export default function PostCard({ post, getData }) {
   //const [countLike,setCountLike] =  useState (post.likeCount)
  
   const handelOthersPro= ()=>{
-    navigate("/GetOthersProfile")
+    navigate("/GetOthersProfile/:id")
 
   }
   

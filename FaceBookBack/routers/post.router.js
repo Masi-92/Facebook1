@@ -15,6 +15,7 @@ const route = Router();
 
 
 
+
 route.get("/myPosts", auth, getMyPost);
 route.get("/", getPost);
 route.post("/", auth, create);
