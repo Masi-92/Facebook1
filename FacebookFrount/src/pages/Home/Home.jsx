@@ -3,7 +3,7 @@ import PostCard from "../../component/post/PostCard";
 
 import style from "./home.module.scss";
 import { getPost } from "../../Api/postApi";
-import { IconButton } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 //import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,8 @@ const Home = () => {
     getData();
   }, []);
 
+
+  
   const getData = () => {
     getPost().then((res) => {
       setData(res.data);
@@ -28,7 +30,7 @@ const Home = () => {
       <header className={style.header}>
         <h1>Home</h1>
         <IconButton>
-          <button onClick={() => handelClick()} className={style.btn}>
+          <Button onClick={() => handelClick()} className={style.btn}>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +46,7 @@ const Home = () => {
               </svg>{" "}
               Add Post
             </span>
-          </button>
+          </Button>
         </IconButton>
       </header>
       <div className={style.container}>

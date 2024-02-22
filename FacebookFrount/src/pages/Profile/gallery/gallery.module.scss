@@ -1,12 +1,11 @@
 .container{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-
-gap: 2;
-color: rgb(15, 115, 202);
-
+    display: grid;
+    grid-template-columns:repeat(2,1fr);
+    gap: 2rem;
+    background-color: rgb(221, 211, 211);
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
 
 .containerImag{
 margin-top: 2rem;
