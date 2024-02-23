@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import About from "../Profile/about/About";
 import Avatar from "../Profile/avatar/Avatar";
 import Count from "../Profile/count/Count";
-//import Gallery from "../Profile/gallery/Gallery";
+import style from "./OthersProfile.module.scss"
 import Social from "../Profile/social/Social";
-import style from "./OthersProfile.module.scss";
+
 
 import { useParams } from "react-router-dom";
 import { getOthersProfile } from "../../Api/profile.api.js";
 import { toast } from "react-toastify";
+import OthersGallery from "./gallery/OthersGallery.jsx";
 
 const OthersProfile = () => {
   const [data, setData] = useState();
@@ -20,7 +21,9 @@ const OthersProfile = () => {
   }, [id]);
 
   function getAllData() {
+ 
    getOthersProfile(id)
+   
       .then((res) => {
         setData(res.data);
       })
@@ -52,7 +55,7 @@ const OthersProfile = () => {
 
       <About about={data.about} />
 
-     {/*  <Gallery /> */}
+   <OthersGallery/>
     </div>
   );
 };

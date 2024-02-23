@@ -29,8 +29,8 @@ const Home = () => {
     <div>
       <header className={style.header}>
         <h1>Home</h1>
-        <IconButton>
-          <Button onClick={() => handelClick()} className={style.btn}>
+    
+          <button onClick={() => handelClick()} className={style.btn}>
             <span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -46,8 +46,8 @@ const Home = () => {
               </svg>{" "}
               Add Post
             </span>
-          </Button>
-        </IconButton>
+          </button>
+      
       </header>
       <div className={style.container}>
         {data.map((post, indx) => {

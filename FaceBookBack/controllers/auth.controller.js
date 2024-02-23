@@ -2,6 +2,7 @@ import userModel from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import Jwt from "jsonwebtoken";
 
+
 export const register = async (req, res) => {
   const { fullName, email, password } = req.body;
   //if(!(fullName && password && email))
@@ -57,12 +58,10 @@ export const editProfile = async (req, res) => {
   res.send(user);
 };
 
+export const getOthersProfile = async (req, res) => {
+  const userId = req.params.id;
 
+  const user = await userModel.findById(userId);
+  res.send(user);
+};
 
-export const getOthersProfile=async (req,res)=>{
-const userId = req.params.id
-
-const user = await userModel.findById(userId)
-res.send(user);
-
-}

@@ -30,3 +30,7 @@ return myApi.post("/post",body)
     return myApi.get(`/post/myPosts`);
   };
   
+
+  export const getOthersPost = (id)=>{
+    return myApi.get(`/post/getPosts/${id}`)
+  }
