@@ -11,6 +11,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Badge } from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 //import Profile  from "../../pages/Profile"
 import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
@@ -79,9 +80,11 @@ export default function PostCard({ post, getData }) {
           </IconButton>
         </Badge>
 
-        <IconButton aria-label="share">
+        <IconButton aria-label="share" >
           <ShareIcon />
         </IconButton>
+         
+        <EditIcon/>
       </CardActions>
     </Card>
   );

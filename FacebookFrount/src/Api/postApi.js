@@ -29,5 +29,5 @@ export const getOthersPost = (id) => {
 };
 
 export const editProfile = (id) => {
-  return myApi.put(`/post/editPost ${id}`);
+  return myApi.put(`/post/editPost/${id}`);
 };
