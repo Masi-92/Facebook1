@@ -8,29 +8,26 @@ export const getDetails = (id) => {
   return myApi.get("/post/" + id);
 };
 
+export const editLike = (id) => {
+  return myApi.put("/post/" + id);
+};
 
-export const editLike = (id)=>{
+export const deletePost = (id) => {
+  return myApi.delete("/post/" + id);
+};
 
-    return myApi.put("/post/"+id)
+export const addPost = (body) => {
+  return myApi.post("/post", body);
+};
 
-}
+export const getMyPost = () => {
+  return myApi.get(`/post/myPosts`);
+};
 
-  export const deletePost = (id)=>{
-return myApi.delete("/post/"+id)
+export const getOthersPost = (id) => {
+  return myApi.get(`/post/getPosts/${id}`);
+};
 
-  }
-
- export  const addPost = (body)=>{
-return myApi.post("/post",body)
-  }
-
-  
-
-  export const getMyPost = () => {
-    return myApi.get(`/post/myPosts`);
-  };
-  
-
-  export const getOthersPost = (id)=>{
-    return myApi.get(`/post/getPosts/${id}`)
-  }
+export const editProfile = (id) => {
+  return myApi.put(`/post/editPost ${id}`);
+};
