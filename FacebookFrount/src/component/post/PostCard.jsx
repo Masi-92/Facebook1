@@ -11,23 +11,27 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Badge } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 //import Profile  from "../../pages/Profile"
 import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
 
 import { editLike } from "../../Api/postApi";
+import ModalEditPost from "./editPost/modalAgreement/modalEditPost";
+import { useState } from "react";
 //import { useEffect } from "react";
 
-export default function PostCard({ post, getData }) {
+export default function PostCard({ post, getData, updateData }) {
   const navigate = useNavigate();
   //const [countLike,setCountLike] =  useState (post.likeCount)
- 
-  const handelOthersPro= ()=>{
-    navigate(`/GetOthersProfile/${post.user._id}`)
+  const [open, setOpen] = useState(false);
+  const handelOthersPro = () => {
+    navigate(`/GetOthersProfile/${post.user._id}`);
+  };
 
-  }
-  
+  const handleOpenModal = () => {
+    setOpen(true);
+  };
   const handleLike = () => {
     editLike(post._id)
       .then(() => {
@@ -45,7 +49,12 @@ export default function PostCard({ post, getData }) {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={
-          <Avatar src={post.user.avatar} sx={{ bgcolor: red[500] }} aria-label="recipe" onClick={()=>handelOthersPro()} >
+          <Avatar
+            src={post.user.avatar}
+            sx={{ bgcolor: red[500] }}
+            aria-label="recipe"
+            onClick={() => handelOthersPro()}
+          >
             R
           </Avatar>
         }
@@ -80,11 +89,19 @@ export default function PostCard({ post, getData }) {
           </IconButton>
         </Badge>
 
-        <IconButton aria-label="share" >
+        <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
-         
-        <EditIcon/>
+
+        <EditIcon onClick={() => handleOpenModal()} />
+        <ModalEditPost
+          onClose={() => {
+            setOpen(false);
+          }}
+          open={open}
+          post={post}
+          updateData={updateData}
+        />
       </CardActions>
     </Card>
   );

@@ -6,7 +6,7 @@ user:{type:Schema.Types.ObjectId,ref:"user"},
 likeCount:{default:0,type:Number},
 image:String,
 text:String,
-avatar:String,
+
 },{
 
 timestamps:true

@@ -3,7 +3,7 @@ import PostCard from "../../component/post/PostCard";
 
 import style from "./home.module.scss";
 import { getPost } from "../../Api/postApi";
-import { Button, IconButton } from "@mui/material";
+//import { Button, IconButton } from "@mui/material";
 //import AddCircleIcon from "@mui/icons-material/AddCircle";
 import { useNavigate } from "react-router-dom";
 
@@ -51,7 +51,7 @@ const Home = () => {
       </header>
       <div className={style.container}>
         {data.map((post, indx) => {
-          return <PostCard post={post} key={indx} getData={getData} />;
+          return <PostCard post={post} key={indx} getData={getData} updateData={getData} />;
         })}
       </div>
     </div>

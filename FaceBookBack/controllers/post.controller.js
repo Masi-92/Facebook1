@@ -8,30 +8,25 @@ export const create = async (req, res) => {
   res.send(result);
 };
 
-
-
-
 export const getPost = async (req, res) => {
-  const posts = await postModel.find().populate("user").sort({_id:-1});
+  const posts = await postModel.find().populate("user").sort({ _id: -1 });
   res.send(posts);
 };
 
 //details
 
-
 export const getDetails = async (req, res) => {
   const postId = req.params.id;
-const validId = mongoose.Types.ObjectId.isValid(postId)
-if(!validId){
-  return res.status(400).send({msg:"error Id ist not Valid"})
-}
+  const validId = mongoose.Types.ObjectId.isValid(postId);
+  if (!validId) {
+    return res.status(400).send({ msg: "error Id ist not Valid" });
+  }
   //const details = await postModel.findOne({ _id:postId });
   const detailsId = await postModel.findById(postId);
 
   //res.send(details);
   res.send(detailsId);
 };
-
 
 export const editLike = async (req, res) => {
   const postId = req.params.id;
@@ -70,11 +65,10 @@ export const deletePost = async (req, res) => {
   };
  */
 
-
 export const getMyPost = async (req, res) => {
   try {
     const userId = req.user.id;
-    const posts = await postModel.find({ user: userId }).sort({_id:-1});
+    const posts = await postModel.find({ user: userId }).sort({ _id: -1 });
 
     res.send(posts);
   } catch (error) {
@@ -83,20 +77,21 @@ export const getMyPost = async (req, res) => {
   }
 };
 
-
 export const getOthersPost = async (req, res) => {
   const userId = req.params.id;
-  const postList = await postModel.find({user:userId}).populate("user");
+  const postList = await postModel.find({ user: userId }).populate("user");
   res.send(postList);
 };
 
- export const editPost = async (req,res)=>{
+export const editPost = async (req, res) => {
   const userId = req.user.id;
-  //console.log(userId)
-  const post = await postModel.findOneAndUpdate({user:userId}, { $set: req.body });
-  //console.log(post)
+  const postId = req.params.id;
+  const post = await postModel.findOneAndUpdate(
+    { user: userId, _id: postId },
+    { $set: req.body },
+    { new: true }
+  );
+
+  console.log(post);
   res.send(post);
-
- }
-
- 
+};

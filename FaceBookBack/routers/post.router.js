@@ -17,9 +17,9 @@ route.get("/myPosts", auth, getMyPost);
 route.get("/getPosts/:id", auth, getOthersPost);
 route.get("/", getPost);
 route.post("/", auth, create);
+route.put("/editPost/:id", auth, editPost);
 route.get("/:id", auth, getDetails);
 route.put("/:id", auth, editLike);
 route.delete("/:id", auth, deletePost);
-route.put("/editPost/:id", auth, editPost);
 
 export default route;
