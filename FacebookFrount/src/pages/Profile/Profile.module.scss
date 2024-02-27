@@ -20,3 +20,38 @@
     filter: brightness(0.5);
   }
 }
+.button {
+  border: none;
+  color: #000000;
+  background-image: linear-gradient(30deg, #7a78d8, #4cf7b0);
+  border-radius: 10px;
+  background-size: 100% auto;
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: bolder;
+  height: 3rem;
+  width: 8rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.button:hover {
+  background-position: right center;
+  background-size: 200% auto;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse512 1.5s infinite;
+}
+
+@keyframes pulse512 {
+  0% {
+    box-shadow: 0 0 0 0 #05bada66;
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgb(218 103 68 / 0%);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
+  }
+}

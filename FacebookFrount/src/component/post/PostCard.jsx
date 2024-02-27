@@ -10,28 +10,69 @@ import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Badge } from "@mui/material";
+import { Badge, Menu, MenuItem } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 //import Profile  from "../../pages/Profile"
 import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
 
-import { editLike } from "../../Api/postApi";
+import { deletePost, editLike } from "../../Api/postApi";
 import ModalEditPost from "./editPost/modalAgreement/modalEditPost";
 import { useState } from "react";
+import { getUserId } from "../../utils/utils";
+//import ModalPost from "./editPost/modalAgreement/ModalPost";
 //import { useEffect } from "react";
-
+//import DeleteIcon from "@mui/icons-material/Delete";
+import dayJs from "dayjs"
 export default function PostCard({ post, getData, updateData }) {
+  //shahab
+  // const [open1, setOpen1] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openOP = Boolean(anchorEl);
+  const userId = getUserId();
+
+  //shahab
   const navigate = useNavigate();
-  //const [countLike,setCountLike] =  useState (post.likeCount)
   const [open, setOpen] = useState(false);
+
   const handelOthersPro = () => {
-    navigate(`/GetOthersProfile/${post.user._id}`);
+   
+    if (post.user._id === userId) {
+      return navigate(`/profile`);
+    } else {
+      navigate(`/GetOthersProfile/${post.user._id}`);
+    }
   };
+
+  
 
   const handleOpenModal = () => {
     setOpen(true);
   };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  //shahab
+  const handleClick2 = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  function handleview() {
+    setOpen1(true);
+  }
+  // Delelt
+
+  const handelDelete = () => {
+    deletePost(post._id)
+      .then(() => {
+      updateData()
+      handleClose()
+      })
+      .catch(() => {
+        console.error("error");
+      });
+  };
+
   const handleLike = () => {
     editLike(post._id)
       .then(() => {
@@ -45,6 +86,7 @@ export default function PostCard({ post, getData, updateData }) {
   const handleDetails = (id) => {
     navigate(`/details/${id}`);
   };
+ 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -59,12 +101,15 @@ export default function PostCard({ post, getData, updateData }) {
           </Avatar>
         }
         action={
-          <IconButton aria-label="settings">
+          <IconButton onClick={handleClick2} aria-label="settings">
             <MoreVertIcon />
           </IconButton>
         }
         title={post.user.fullName}
-        subheader={post.createdAt}
+
+
+        //Date
+        subheader={dayJs(post.createdAt).format("DD.MM.YYYY")}
       />
 
       <CardMedia
@@ -93,7 +138,7 @@ export default function PostCard({ post, getData, updateData }) {
           <ShareIcon />
         </IconButton>
 
-        <EditIcon onClick={() => handleOpenModal()} />
+        <EditIcon />
         <ModalEditPost
           onClose={() => {
             setOpen(false);
@@ -103,6 +148,27 @@ export default function PostCard({ post, getData, updateData }) {
           updateData={updateData}
         />
       </CardActions>
+      {/*     <ModalPost post={post} onClose={() => setOpen(false)} open={open} /> */}
+
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={openOP}
+        onClose={handleClose}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={handleClose}>Profile</MenuItem>
+
+        {post.user._id === userId && 
+        <>
+        <MenuItem onClick={() => handleOpenModal()}>EDITPOST</MenuItem>
+        <MenuItem  onClick={handelDelete}>Delete Post</MenuItem>
+        </>
+        }
+        
+      </Menu>
     </Card>
   );
 }

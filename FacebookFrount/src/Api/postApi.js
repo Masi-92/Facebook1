@@ -28,6 +28,6 @@ export const getOthersPost = (id) => {
   return myApi.get(`/post/getPosts/${id}`);
 };
 
-export const editPosts = (id,body) => {
+export const editPostsById = (id,body) => {
   return myApi.put(`/post/editPost/${id}`,body);
 };

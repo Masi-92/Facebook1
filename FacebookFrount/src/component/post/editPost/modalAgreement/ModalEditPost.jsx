@@ -4,7 +4,7 @@ import style from "./modalAgreement.module.scss";
 import { toast } from "react-toastify";
 
 import InputImage from "../../../SwipeableDrawer/editeProfile/uplaud/inputImage";
-import { editPosts } from "../../../../Api/postApi";
+import { editPostsById } from "../../../../Api/postApi";
 
 const ModalEditPost = ({ open, onClose, post, updateData }) => {
   const [editPost, setEditPost] = useState({
@@ -21,7 +21,7 @@ const ModalEditPost = ({ open, onClose, post, updateData }) => {
   }, []);
 
   const handleEditPost = () => {
-    editPosts(post._id, editPost)
+    editPostsById(post._id, editPost)
       .then(() => {
         toast.success("Profile updated successfully!");
         updateData();

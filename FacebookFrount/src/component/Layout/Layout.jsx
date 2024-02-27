@@ -3,14 +3,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import style from "./layout.module.scss";
 import { jwtDecode } from "jwt-decode";
 import { SwipeableDrawer } from "@mui/material";
-
 import StorageIcon from "@mui/icons-material/Storage";
+
+
+
+
 export const Layout = () => {
   const navigate = useNavigate();
 
   const [state, setState] = useState({
     right: false,
-    logout:false
+    logout: false,
   });
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -60,12 +63,14 @@ export const Layout = () => {
     }
   }, [navigate]);
 
+  //_____________________________________________ anchor inhalte
 
-//_____________________________________________ anchor inhalte 
-
-
-  const list = (anchor) => (
-    <div>
+  const list = () => (
+    <div   style={{
+      cursor: "pointer",
+      color: "black",
+      borderBottom: "2px solid gray",
+    }} >
       <div
         onClick={HandleLogout}
         style={{
@@ -77,7 +82,7 @@ export const Layout = () => {
         Logout
       </div>
 
-      {anchor}
+      {/*    {anchor} */}
     </div>
   );
 
@@ -92,7 +97,7 @@ export const Layout = () => {
                   to={item.to}
                   style={({ isActive }) => ({
                     color: isActive ? "#4db5ff" : "gray",
-                    borderBottom: isActive ? "2px solid gray" : "none",
+                    borderBottom: isActive ? "3px solid blue" : "none",
                   })}
                 >
                   {item.name}
@@ -106,6 +111,9 @@ export const Layout = () => {
                 cursor: "pointer",
                 border: "none",
                 outline: "none",
+                color: "gray",
+                paddingRight:".7rem",
+                paddingTop:".2rem"
               }}
             >
               <StorageIcon />
@@ -113,11 +121,19 @@ export const Layout = () => {
           </ul>
         </nav>
       </header>
-      <SwipeableDrawer
+      <SwipeableDrawer   
         anchor="right"
         open={state["right"]}
         onClose={toggleDrawer("right", false)}
         onOpen={toggleDrawer("right", true)}
+        sx={{
+          "& .MuiDrawer-paper": {
+            backgroundColor: "#f0f0f0", // Hintergrundfarbe anpassen
+            width: "150px",
+            marginTop:"3rem",
+            padding:".5rem" // Breite anpassen
+          },
+        }}
       >
         {list("right")}
       </SwipeableDrawer>

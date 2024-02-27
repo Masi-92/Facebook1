@@ -1,6 +1,37 @@
-.container {
-display: grid;
-gap :2rem;
-margin-top: 2rem;
+.container1 {
+  margin-top: 5rem;
+  padding: 2rem;
+}
 
+.container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 50rem;
+  align-items: center;
+  justify-content: center;
+  top: 5rem;
+  gap: 2rem;
+  margin: auto;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 30px;
+  font-size: 30px;
+  background-color: rgb(240, 237, 232);
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.saveButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(238, 236, 233);
+  padding: 3rem;
+}
+.inputImage {
+  margin-top: 1rem !important;
 }

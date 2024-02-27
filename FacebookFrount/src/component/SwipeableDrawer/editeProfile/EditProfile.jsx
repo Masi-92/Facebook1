@@ -30,7 +30,7 @@ const EditProfile = () => {
           linkFaceBook: res.data.linkFaceBook,
           LinkTwitter: res.data.LinkTwitter,
           LinkInstagram: res.data.LinkInstagram,
-          background:res.data.background
+          background: res.data.background,
         });
       })
       .catch(() => {
@@ -71,69 +71,92 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
-      <h2>Edit Profile</h2>
-      <Card className={style.container}>
-      <div>
-        <TextField
-          name="fullName"
-          label="Full Name"
-          onChange={handleChangeEditProfileForm}
-          value={profile.fullName}
-        />
-        <TextField
-          name="email"
-          label="Email"
-          onChange={handleChangeEditProfileForm}
-          value={profile.email}
-        />
-        <TextField
-          name="job"
-          label="Job"
-          onChange={handleChangeEditProfileForm}
-          value={profile.job}
-        />
-        <TextField
-          name="description"
-          label="description"
-          onChange={handleChangeEditProfileForm}
-          value={profile.description}
-        />
-        <TextField
-          name="linkFaceBook"
-          label="linkFaceBook"
-          onChange={handleChangeEditProfileForm}
-          value={profile.linkFaceBook}
-        />
-</div>
-<div>
-        <TextField
-          name="LinkTwitter"
-          label="LinkTwitter"
-          onChange={handleChangeEditProfileForm}
-          value={profile.LinkTwitter}
-        />
-        <TextField
-          name="LinkInstagram"
-          label="LinkInstagram"
-          onChange={handleChangeEditProfileForm}
-          value={profile.LinkInstagram}
-        />
-        <TextField
-          name="bio"
-          label="bio"
-          onChange={handleChangeEditProfileForm}
-          value={profile.bio}
-        />
+    <div  className={style.container1}>
+    <div className={style.container}>
+     
+      <Card >
+        <div className={style.cardContent}>
+          <div>
+            <TextField
+              name="fullName"
+              label="Full Name"
+              onChange={handleChangeEditProfileForm}
+              value={profile.fullName}
+              style={{marginTop:"1rem"}}
+            />
+            <TextField
+              name="email"
+              label="Email"
+              onChange={handleChangeEditProfileForm}
+              value={profile.email}
+              style={{marginTop:"1rem"}}
+            />
+            <TextField
+              name="job"
+              label="Job"
+              onChange={handleChangeEditProfileForm}
+              value={profile.job}
+              style={{marginTop:"1rem"}}
+            />
+             <TextField
+              name="bio"
+              label="bio"
+              onChange={handleChangeEditProfileForm}
+              value={profile.bio}
+              style={{marginTop:"1rem"}}
+            />
 
-        <InputImage setValue={handleChangeImage} value={profile.avatar} />
+            <TextField
+              name="description"
+              label="description"
+              onChange={handleChangeEditProfileForm}
+              value={profile.description}
+              style={{marginTop:"1rem"}}
+            />
+        
+          </div>
+          <div>
+            <TextField
+              name="LinkTwitter"
+              label="LinkTwitter"
+              onChange={handleChangeEditProfileForm}
+              value={profile.LinkTwitter}
+          
+            />
+                <TextField
+              name="linkFaceBook"
+              label="linkFaceBook"
+              onChange={handleChangeEditProfileForm}
+              value={profile.linkFaceBook}
+              style={{marginTop:"1rem" }}
+            />
+            <TextField
+              name="LinkInstagram"
+              label="LinkInstagram"
+              onChange={handleChangeEditProfileForm}
+              value={profile.LinkInstagram}
+              style={{marginTop:"1rem"}}
+            />
+           
+            <InputImage    className={style.inputImage} setValue={handleChangeImage} value={profile.avatar} />
 
-        <InputImage  setValue={handleChangeBackground} value={profile.background} /> 
+            <InputImage
+              setValue={handleChangeBackground}
+              value={profile.background}
+              className={style.inputImage}
+         
+            />
+          </div>
+    
         </div>
-        <Button variant="contained" onClick={handleEditProfile}>
-          Save
-        </Button>
+        <div className={style.saveButtonContainer}>
+            {" "}
+            <Button variant="contained" onClick={handleEditProfile}>
+              Save
+            </Button>
+          </div>
       </Card>
+      </div>
     </div>
   );
 };
