@@ -12,3 +12,10 @@ import commentModel from "../models/comment.model.js";
   });
   res.send(comment)
 };
+
+
+export const getCommentByPostId = async (req, res) => {
+  const postId = req.params.id;
+  const comment = await commentModel.find({post:postId}).populate("user");
+  res.send(comment);
+};

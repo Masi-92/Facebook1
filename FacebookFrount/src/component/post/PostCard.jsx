@@ -12,19 +12,18 @@ import ShareIcon from "@mui/icons-material/Share";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Badge, Menu, MenuItem } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-//import Profile  from "../../pages/Profile"
+import CommentIcon from "@mui/icons-material/Comment";
 import { useNavigate } from "react-router-dom";
-//import { useState } from "react";
-
 import { deletePost, editLike } from "../../Api/postApi";
 import ModalEditPost from "./editPost/modalAgreement/modalEditPost";
 import { useState } from "react";
 import { getUserId } from "../../utils/utils";
-//import ModalPost from "./editPost/modalAgreement/ModalPost";
-//import { useEffect } from "react";
-//import DeleteIcon from "@mui/icons-material/Delete";
-import dayJs from "dayjs"
-export default function PostCard({ post, getData, updateData }) {
+import dayJs from "dayjs";
+import CreateComment from "../comment/CreateComment";
+
+
+
+export default function PostCard({ post, getData, updateData ,Countcomment}) {
   //shahab
   // const [open1, setOpen1] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
@@ -36,15 +35,12 @@ export default function PostCard({ post, getData, updateData }) {
   const [open, setOpen] = useState(false);
 
   const handelOthersPro = () => {
-   
     if (post.user._id === userId) {
       return navigate(`/profile`);
     } else {
       navigate(`/GetOthersProfile/${post.user._id}`);
     }
   };
-
-  
 
   const handleOpenModal = () => {
     setOpen(true);
@@ -65,8 +61,8 @@ export default function PostCard({ post, getData, updateData }) {
   const handelDelete = () => {
     deletePost(post._id)
       .then(() => {
-      updateData()
-      handleClose()
+        updateData();
+        handleClose();
       })
       .catch(() => {
         console.error("error");
@@ -86,7 +82,14 @@ export default function PostCard({ post, getData, updateData }) {
   const handleDetails = (id) => {
     navigate(`/details/${id}`);
   };
- 
+
+  // AddComment
+
+  /* 
+  const handleAddComment = ()=>{
+navigate("/CreateComment")
+
+  } */
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
@@ -106,8 +109,6 @@ export default function PostCard({ post, getData, updateData }) {
           </IconButton>
         }
         title={post.user.fullName}
-
-
         //Date
         subheader={dayJs(post.createdAt).format("DD.MM.YYYY")}
       />
@@ -137,8 +138,14 @@ export default function PostCard({ post, getData, updateData }) {
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        <Badge badgeContent={post.comment} color="secondary">
+        <IconButton aria-label="share">
+          <CommentIcon />
+        </IconButton>
+        </Badge>
+        {/* AddComment */}
+        {/*   <CommentIcon onClick={handleAddComment} /> */}
 
-        <EditIcon />
         <ModalEditPost
           onClose={() => {
             setOpen(false);
@@ -161,14 +168,14 @@ export default function PostCard({ post, getData, updateData }) {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
 
-        {post.user._id === userId && 
-        <>
-        <MenuItem onClick={() => handleOpenModal()}>EDITPOST</MenuItem>
-        <MenuItem  onClick={handelDelete}>Delete Post</MenuItem>
-        </>
-        }
-        
+        {post.user._id === userId && (
+          <>
+            <MenuItem onClick={() => handleOpenModal()}>EDITPOST</MenuItem>
+            <MenuItem onClick={handelDelete}>Delete Post</MenuItem>
+          </>
+        )}
       </Menu>
+      <CreateComment postId={post._id} />
     </Card>
   );
 }

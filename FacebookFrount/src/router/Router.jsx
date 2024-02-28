@@ -9,6 +9,7 @@ import AddPost from "../pages/addPost/Addpost";
 import EditProfile from "../component/SwipeableDrawer/editeProfile/EditProfile";
 import Gallery from "../pages/Profile/gallery/Gallery";
 import OthersProfile from "../pages/others/OthersProfile";
+import CreateComment from "../component/comment/CreateComment";
 //import ModalEditPost from "../component/post/editPost/modalAgreement/modalEditPost";
 //import Drawer from "../component/SwipeableDrawer/Drawer"
 const Router = () => {
@@ -26,7 +27,7 @@ const Router = () => {
       <Route path="/editProfile" element={<EditProfile />} />
       <Route path="/gallery/:id" element={<Gallery />} />
       <Route path="/GetOthersProfile/:id" element={<OthersProfile />} />
-   
+      <Route path="/CreateComment" element={<CreateComment/>} />
     </Routes>
   );
 };
