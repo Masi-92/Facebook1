@@ -1,7 +1,5 @@
 import { Schema, model } from "mongoose"
 
-
-
 const schema = new Schema({
     user:{type:Schema.Types.ObjectId,ref:"user"},
     text:String,

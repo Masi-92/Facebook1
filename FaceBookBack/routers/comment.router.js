@@ -6,5 +6,5 @@ const route = Router();
 
 
 route.post("/",auth,createComment )
-route.get("/",auth,getCommentByPostId)
+route.get("/:id",auth,getCommentByPostId)
 export default route;

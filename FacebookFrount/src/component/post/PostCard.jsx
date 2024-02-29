@@ -19,7 +19,7 @@ import ModalEditPost from "./editPost/modalAgreement/modalEditPost";
 import { useState } from "react";
 import { getUserId } from "../../utils/utils";
 import dayJs from "dayjs";
-import CreateComment from "../comment/CreateComment";
+
 
 
 
@@ -175,7 +175,8 @@ navigate("/CreateComment")
           </>
         )}
       </Menu>
-      <CreateComment postId={post._id} />
+     
+
     </Card>
   );
 }

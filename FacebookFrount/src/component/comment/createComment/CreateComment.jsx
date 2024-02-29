@@ -1,16 +1,11 @@
-
 import { useState } from "react";
 import { TextField } from "@mui/material";
-import { createComment } from "../../Api/comment.api";
-
-
-
-
-
-const CreateComment = ({postId,Countcomment}) => {
+import { createComment } from "../../../Api/comment.api";
+import style from "../getComment/getComment.module.scss"
+const CreateComment = ({ postId, Countcomment, updateData }) => {
   const [comment, setComment] = useState({
     text: "",
-   post: postId, 
+    post: postId,
   });
 
   const handleAddNewComment = () => {
@@ -19,6 +14,7 @@ const CreateComment = ({postId,Countcomment}) => {
         setComment({
           text: res.data.text,
         });
+        updateData();
       })
       .catch(() => {
         alert("Invalid post");
@@ -35,7 +31,7 @@ const CreateComment = ({postId,Countcomment}) => {
 
   return (
     <div>
-         <TextField
+      <TextField
         onChange={handleText}
         value={comment.text}
         margin="normal"
@@ -45,7 +41,7 @@ const CreateComment = ({postId,Countcomment}) => {
         id="text"
       />
 
-      <button onClick={handleAddNewComment}>Add Comment</button>
+      <button className={style.button} onClick={handleAddNewComment}>Add Comment</button>
     </div>
   );
 };

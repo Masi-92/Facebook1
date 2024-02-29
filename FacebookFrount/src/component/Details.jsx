@@ -7,9 +7,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate, useParams } from "react-router-dom";
 import { deletePost, editLike, getDetails } from "../Api/postApi";
+import GetComment from "./comment/getComment/GetComment";
+
+
 
 export const Details = () => {
-  const [data, setData] = useState({});
+  const [post, setPost] = useState({});
   const { id } = useParams();
 const navigate = useNavigate()
   useEffect(() => {
@@ -18,11 +21,11 @@ const navigate = useNavigate()
 
   const getData = () => {
     getDetails(id).then((res) => {
-      setData(res.data);
+      setPost(res.data);
     });
   };
   const handleLike = () => {
-    editLike(data._id)
+    editLike(post._id)
       .then(() => {
         getData();
       })
@@ -32,7 +35,7 @@ const navigate = useNavigate()
   };
 
   const handelDelete =()=>{
-deletePost(data._id)
+deletePost(post._id)
 .then(()=>{
   navigate(-1)
 })
@@ -48,13 +51,13 @@ deletePost(data._id)
   return (
     <div className={style.details}>
       <CardContent>
-        <span> {data.username}</span>
+        <span> {post.username}</span>
         <Typography variant="body2" color="text.secondary">
-          {data.text}
+          {post.text}
         </Typography>
 
         <span>
-          Like:{data.likeCount}{" "}
+          Like:{post.likeCount}{" "}
           <FavoriteIcon style={{ color: "red" }} onClick={handleLike} />
         </span>
        <DeleteIcon  onClick = {handelDelete}/>
@@ -63,9 +66,11 @@ deletePost(data._id)
       <CardMedia
         component="img"
         height="194"
-        image={data.image + "?date=" + new Date().getTime()}
-        alt={data.username}
+        image={post.image + "?date=" + new Date().getTime()}
+        alt={post.username}
       />
+     
+       <GetComment postId={id}/>
     </div>
   );
 };

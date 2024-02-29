@@ -16,6 +16,6 @@ import commentModel from "../models/comment.model.js";
 
 export const getCommentByPostId = async (req, res) => {
   const postId = req.params.id;
-  const comment = await commentModel.find({post:postId}).populate("user");
+  const comment = await commentModel.find({post:postId}).populate("user").sort({id:-1});
   res.send(comment);
 };
